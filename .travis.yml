@@ -1,0 +1,24 @@
+language: ruby
+branches:
+  only:
+    - master
+before_install:
+  - echo $key_secret_password | gpg --passphrase-fd 0 deploy_key.gpg
+  - chmod 600 deploy_key
+  - eval `ssh-agent -s`
+  - ssh-add deploy_key
+  - ssh-add -l
+  - git config --global user.name "Travis-CI"
+  - git config --global user.email "travis-ci@example.com"
+jobs:
+  include:
+    - stage: cron
+      if: type = cron
+      script:
+        - bash ./source.sh
+        - ruby ./generate.rb > skk-jisyo.imas
+        - bash ./deploy.sh
+env:
+  global:
+    secure: "HlR5JEGeC0Lp0h2dpLwbE9/wnCwzPrlC0ta2eaSxpGPOBx2BjAsmRzYiNV2mkepLYA0efbMzFjvnTapxFRQBlh9Br+LGVh18/t3e80gKbcpfw5s+L7MytPm4uwO9k69nQ/KtMogcxjw/Cm4LS0XRKdj82bHZmN124p2AdeDcwElXl9nKtIrYOEuazgDBoWcbwy6TO4NjbzCIQGheXNYkpF9hWgMfJ4AfbWNXEZ0iNTArRmD5ebcgpV5BtHfpqolqHmy0Z/qzmlPgKklRmg5xNQfMRndF5Xp+qJYbkXLGGuzsCsOJZqBQy3Ibe0BzCrjKdkhDgxaDJ/ifeiSmhRfPpHvMTsxR2bsAEJi4zdn7j2erIfA3YaSq4k6jxnt7bxWMQWnMzkKxgc2FHM//3YLRDLpR2/4878LJPO7E9l6pOND+tlPBNJSdFGD60NBQsAT7cuNCIsD8Dc4PehZVTAi6uC4PmbsnrRmmL+enst2sZBW05SLNHhHO9Mt4oahbIc5BT7zs7c1jPxZrVQKxQK9emtNOmY7AXU8KB8myCS2o5sQrlMIpNZ+3Ycw6eDO8/RConsJ8a/cYQhuyAJKej04ZNksNKBPJCnIVhKi6CIkjnCesr5I4UjNCKLUZNB15UDbVQUMb94BDojor1ymldd7csEu0o+YsRp//zWS8NUKR+go="
+
