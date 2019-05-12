@@ -31,6 +31,7 @@ cd ..
 # File Deploy
 cp README.md out/
 cp skk-jisyo.imas out/
+cp skk-jisyo.imas.bom out/
 
 # Now let's go have some fun with the cloned repo
 cd out
