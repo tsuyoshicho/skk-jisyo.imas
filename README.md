@@ -1,7 +1,5 @@
 # SKK dictionary for IDOLM@STER
 
-[![Build Status](https://travis-ci.com/tsuyoshicho/skk-jisyo.imas.svg?branch=master)](https://travis-ci.com/tsuyoshicho/skk-jisyo.imas)
-
 Scripts to generate SKK dictionary contains words, names around IDOLM@STER world.
 
 Basically entries come from [THE IDOLM@STER データベース](http://imas-db.jp/) [IMEユーザー辞書登録用テキスト](https://github.com/maruamyu/imas-ime-dic).
@@ -16,7 +14,7 @@ ruby generate.sh > skk-jisyo.imas
 
 ### Generated files
 - [skk-jisyo.imas](./skk-jisyo.imas)
-- [skk-jisyo.imas with BOM](./skk-jisyo.imas.bom)  Currently not maintained
+- [skk-jisyo.imas with BOM](./skk-jisyo.imas.bom)
 
 ## Thanks
 

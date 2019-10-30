@@ -5,11 +5,9 @@
 .gitattributes eol=lf
 .gitignore     eol=lf
 
-.travis.yml    eol=lf
-deploy.sh      eol=lf
+*.sh           eol=lf
+*.rb           eol=lf
 Makefile       eol=lf
-
-deploy_key.gpg binary
 
 *.md           text
 *.txt          text
