@@ -45,11 +45,11 @@ jobs:
         uses: actions/checkout@v2
         with:
           persist-credentials: false
+      - name: Build pages source
+        run: |
+          bash ./deploy.sh
       - name: Deploy gh-pages
-        uses: JamesIves/github-pages-deploy-action@releases/v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BASE_BRANCH: master
-          BRANCH: gh-pages
-          FOLDER: build
-          BUILD_SCRIPT: bash ./deploy.sh
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
